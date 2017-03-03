@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+
+    div {
+        width: {{width}}px;
+        display: block;
+        float: left;
+        border: 1px solid silver;
+        padding: 7px;
+    }
+    div:first-of-type {
+        margin-right: 10px;
+    }
+    </style>
+</head>
+<body>
+<h1>{{title}}</h1>
+<div>
+    <h2>Rendered in browser</h2>
+    <canvas width="{{width}}" height="{{height}}"></canvas>
+</div>
+<div>
+    <h2>Rendered on server</h2>
+    {{serverimage}}
+</div>
+
+<script src="{{script}}"></script>
+<script>render(document.querySelector("canvas"));</script>
+</body>
+</html>

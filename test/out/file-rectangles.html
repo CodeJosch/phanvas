@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+
+    div {
+        width: 652px;
+        display: block;
+        float: left;
+        border: 1px solid silver;
+        padding: 7px;
+    }
+    div:first-of-type {
+        margin-right: 10px;
+    }
+    </style>
+</head>
+<body>
+<h1>Imagefile created from rectangles</h1>
+<div>
+    <h2>Rendered in browser</h2>
+    <canvas width="652" height="652"></canvas>
+</div>
+<div>
+    <h2>Rendered on server</h2>
+    <img  width="652" height="652" src="rectangles.png" alt="server rendered"/>
+</div>
+
+<script src="../src/rectangles.js"></script>
+<script>render(document.querySelector("canvas"));</script>
+</body>
+</html>
