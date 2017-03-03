@@ -1,6 +1,6 @@
 {
   "name": "phanvas",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "Jochen Renner <mail@script-schmiede.de>",
   "description": "Use html5 canvas from nodejs with the same scripts as in the browser to create images",
   "main": "index.js",
