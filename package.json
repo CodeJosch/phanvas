@@ -17,5 +17,6 @@
     "type": "git",
     "url": "https://github.com/CodeJosch/phanvas"
   },
+  "kewywords": ["canvas","html5","drawing","phantomjs"],
   "license": "ISC"
 }
