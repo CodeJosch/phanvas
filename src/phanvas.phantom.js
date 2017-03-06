@@ -1,6 +1,7 @@
 "use strict";
 var err = "";
 var system = require('system');
+system.stdout.setEncoding("binary");
 
 try {
 	var page = require('webpage').create();
@@ -11,18 +12,20 @@ try {
 		quality: system.args[4],
 		renderto: system.args[5],
 		filename: system.args[6],
-		renderer: system.args[7]
+		renderer: system.args[7],
+		data: system.args[8]
 	};
 	page.onError = function (msg, trace) {
-		err = "Page evaulation - "+msg;
+		err = "Page evaulation - " + msg;
 	};
 	page.viewportSize = {width: opts.width, height: opts.height};
+
 
 	// create a plain page
 	page.content = '<!-- doctype html--><html><head><style>body{margin:0;}</style></head><body><canvas width="'
 		+ opts.width + '" height="' + opts.height + '"></canvas><script>(' +
-		opts.renderer + ')(document.querySelector("canvas"))</script></body></html>';
-
+		opts.renderer + ')(document.querySelector("canvas"),' +
+		( (typeof opts.data !== "undefined") ? opts.data: "undefined") + ')</script></body></html>';
 	if (err) throw new Error(err);
 
 	// get canvas size, might have changed on rendering
@@ -34,8 +37,9 @@ try {
 
 	// render page
 	/*if (opts.renderto === "buffer") {
-		system.stdout.write(page.renderBuffer(opts.format, opts.quality).toString());
-	} else */ if (opts.renderto === "file") {
+		// not supported in current prebuild release
+		//page.renderBuffer( {format: opts.format, quality: opts.quality});
+	} else */if (opts.renderto === "file") {
 		page.render(opts.filename, {format: opts.format, quality: opts.quality});
 	} else if (opts.renderto === "dataurl") {
 		var pre = "data:";

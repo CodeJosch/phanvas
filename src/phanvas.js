@@ -20,16 +20,21 @@ module.exports = {
 					opts.quality || -1,
 					opts.renderto || "buffer",
 					opts.filename || "",
-					opts.renderer
+					opts.renderer,
+					typeof opts.data !== "undefined" ? JSON.stringify(opts.data) : undefined
 				]
 
-				childProcess.execFile(binPath, childArgs, function (err, stdout, stderr) {
+				childProcess.execFile(binPath, childArgs, {encoding: 'binary', maxBuffer: 5000*1024},function (err, stdout, stderr) {
 					if (err) {
 						reject(err);
-					} else if (stderr) {
+					} else if (stderr.toString()) {
 						reject(new Error(stderr));
 					} else {
-						resolve(stdout)
+						if (childArgs[5] === "buffer") {
+							resolve( Buffer.from(stdout, 'base64') );
+						} else {
+							resolve(stdout);
+						}
 					}
 				});
 			}
