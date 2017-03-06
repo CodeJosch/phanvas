@@ -1,6 +1,6 @@
 {
   "name": "phanvas",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "author": "Jochen Renner <mail@script-schmiede.de>",
   "description": "Use html5 canvas from nodejs with the same scripts as in the browser to create images",
   "main": "index.js",
@@ -17,6 +17,11 @@
     "type": "git",
     "url": "https://github.com/CodeJosch/phanvas"
   },
-  "kewywords": ["canvas","html5","drawing","phantomjs"],
+  "kewywords": [
+    "canvas",
+    "html5",
+    "drawing",
+    "phantomjs"
+  ],
   "license": "ISC"
 }
