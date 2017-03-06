@@ -1,18 +1,18 @@
-const phanvas = require(".");
+const phanvas = require("..");
 
-phanvas({
-	renderer: function (canvas) {
-		/* code drawing con canvas */
+phanvas(
+	function (canvas) {
+		/* code drawing on canvas */
 		var ctx = canvas.getContext("2d");
 		ctx.fillStyle = "red";
 		ctx.fillRect(10, 10, 100, 100);
 	}
-})
-.then(function (base64) {
-	// dataurl contains base64 encoded image.
+)
+.then(function (buffer) {
 	// do sth better than dumping it to the console ;)
-	console.info(base64);
+	console.info(buffer);
 })
 .catch(function (err) {
+	// handle any error here
 	console.error(err);
 });
